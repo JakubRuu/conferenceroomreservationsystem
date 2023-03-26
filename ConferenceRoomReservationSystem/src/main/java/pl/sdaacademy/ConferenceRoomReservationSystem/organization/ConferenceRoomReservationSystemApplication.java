@@ -1,4 +1,4 @@
-package pl.sdaacademy.ConferenceRoomReservationSystem;
+package pl.sdaacademy.ConferenceRoomReservationSystem.organization;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +8,8 @@ public class ConferenceRoomReservationSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ConferenceRoomReservationSystemApplication.class, args);
+
+
 	}
 
 }
