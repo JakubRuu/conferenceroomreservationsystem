@@ -1,17 +1,21 @@
-package pl.sdaacademy.ConferenceRoomReservationSystem.organization;
+package pl.sdaacademy.ConferenceRoomReservationSystem.organization.organization;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
+interface AddOrganization {
+}
+
+interface UpdateOrganization {
+}
 
 @Entity
 public class Organization {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private int id;
-    @Size(min = 2,max = 20, groups = {AddOrganization.class, UpdateOrganization.class})
+    @Size(min = 2, max = 20, groups = {AddOrganization.class, UpdateOrganization.class})
     @NotBlank(groups = AddOrganization.class)
     private String name;
 
@@ -19,6 +23,7 @@ public class Organization {
 
     public Organization() {
     }
+
 
     public Organization(String name, String description) {
         this.name = name;
@@ -33,6 +38,7 @@ public class Organization {
     public void setName(String name) {
         this.name = name;
     }
+
     public String getDescription() {
         return description;
     }
@@ -41,5 +47,3 @@ public class Organization {
         this.description = description;
     }
 }
-interface AddOrganization{ }
-interface UpdateOrganization{}
