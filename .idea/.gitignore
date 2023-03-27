@@ -2,4 +2,12 @@
 /shelf/
 /workspace.xml
 /libraries
-
+/compiler.xml
+/encodings.xml
+/jarRepositories.xml
+/jpa-buddy.xml
+/misc.xml
+/modules.xml
+/projektKoncowy.iml
+/uiDesigner.xml
+/vcs.xml
