@@ -10,6 +10,8 @@ import java.util.Objects;
 public class Organization {
 
     @Id
+    @GeneratedValue
+    private Long id;
     @Size(min = 2, max = 20, groups = {AddOrganization.class, UpdateOrganization.class})
     @NotBlank(groups = AddOrganization.class)
     private String name;
@@ -24,6 +26,19 @@ public class Organization {
         this.description = description;
     }
 
+    public Organization(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

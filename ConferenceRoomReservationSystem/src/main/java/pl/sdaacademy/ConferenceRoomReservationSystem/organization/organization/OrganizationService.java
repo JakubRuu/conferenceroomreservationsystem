@@ -41,7 +41,8 @@ class OrganizationService {
         return organization;
     }
 
-    Organization updateOrganization(String name, Organization organization) {
+    Organization
+    updateOrganization(String name, Organization organization) {
         Organization organizationToUpdate = organizationRepository
                 .findByName(name)
                 .orElseThrow(() -> new NoSuchElementException(""));

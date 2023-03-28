@@ -49,7 +49,8 @@ public class OrganizationRepositoryTest {
         //given
         organizationRepository.save(arg0);
         //then
-        assertEquals(arg0, testEntityManager.find(Organization.class, "Intive"));
+        assertEquals(arg0, testEntityManager.find(Organization.class,
+                "Intive"));
     }
 
     @Test
