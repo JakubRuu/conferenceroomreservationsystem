@@ -55,4 +55,8 @@ class OrganizationService {
         return organizationRepository.save(organizationToUpdate);
 
     }
+
+    public void updateOrganization(String name){
 }
+}
+

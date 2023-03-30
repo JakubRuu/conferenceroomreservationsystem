@@ -72,7 +72,8 @@ public class Organization {
     @Override
     public String toString() {
         return "Organization{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

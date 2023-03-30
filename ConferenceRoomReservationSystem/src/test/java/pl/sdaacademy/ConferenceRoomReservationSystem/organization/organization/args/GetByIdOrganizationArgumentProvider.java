@@ -20,12 +20,12 @@ public class GetByIdOrganizationArgumentProvider implements ArgumentsProvider {
                                 new Organization("Google", "IT Company"),
                                 new Organization("Uber", "Deliver Company")
                         ),
-                        "Intive",
-                        Optional.of(new Organization("Intive", "IT Company"))
+                        1L,
+                        Optional.of(new Organization(1L, "Intive", "IT Company"))
                 ),
                 Arguments.of(
                         Collections.emptyList(),
-                        "Intive",
+                        1L,
                         Optional.empty()
                 ),
                 Arguments.of(
@@ -34,7 +34,7 @@ public class GetByIdOrganizationArgumentProvider implements ArgumentsProvider {
                                 new Organization("Google", "IT Company"),
                                 new Organization("Uber", "Deliver Company")
                         ),
-                        "Test",
+                        400L,
                         Optional.empty()
                 )
         );

@@ -20,9 +20,9 @@ public class GetAllOrganizationArgumentProvider implements ArgumentsProvider {
                                 new Organization("Google", "IT Company"),
                                 new Organization("Uber", "Deliver Company")
                         ),
-                        Arrays.asList(new Organization("intive", "IT Company"),
-                                new Organization("Google", "IT Company"),
-                                new Organization("Uber", "Deliver Company")
+                        Arrays.asList(new Organization(1L, "intive", "IT Company"),
+                                new Organization(2L, "Google", "IT Company"),
+                                new Organization(3L, "Uber", "Deliver Company")
                         )
                 ),
                 Arguments.of(Collections.emptyList(), Collections.emptyList())
