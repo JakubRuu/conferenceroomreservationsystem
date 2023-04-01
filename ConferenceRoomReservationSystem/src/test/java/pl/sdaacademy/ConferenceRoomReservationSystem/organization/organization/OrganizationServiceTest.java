@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pl.sdaacademy.ConferenceRoomReservationSystem.organization.SortType;
 import pl.sdaacademy.ConferenceRoomReservationSystem.organization.organization.args.SortOrganizationArgumentProvider;
+import pl.sdaacademy.ConferenceRoomReservationSystem.organization.organization.args.UpdateOrganizationArgumentProvider;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -114,26 +115,27 @@ class OrganizationServiceTest {
 
     }
 
-//    @ParameterizedTest
-//    @ArgumentsSource(UpdateOrganizationArgumentProvider.class)
-//    void when_update_arg1_organization_with_arg2_data_then_should_be_update_to_arg3(
-//            String name,
-//            Organization arg1,
-//            Organization arg2,
-//            Organization arg3
-//    ) {
-//
-//        //given
-//        Mockito.when(organizationRepository.findByName(name)).thenReturn(Optional.of(arg1));
-//        Mockito.when(organizationRepository.save(arg1)).thenReturn(arg3);
-//        //when
-//
-//        Organization result = organizationService.updateOrganization(name, arg2);
-//        //then
-//        assertEquals(arg3, result);
-//        Mockito.verify(organizationRepository).save(arg3);
-//
-//    }
+    @ParameterizedTest
+    @ArgumentsSource(UpdateOrganizationArgumentProvider.class)
+    void when_update_arg1_organization_with_arg2_data_then_should_be_update_to_arg3(
+            String name,
+            Organization arg1,
+
+            Organization arg2,
+            Organization arg3
+    ) {
+
+        //given
+        Mockito.when(organizationRepository.findByName(name)).thenReturn(Optional.of(arg1));
+        Mockito.when(organizationRepository.save(arg1)).thenReturn(arg3);
+        //when
+
+        Organization result = organizationService.updateOrganization(name, arg2);
+        //then
+        assertEquals(arg3, result);
+        Mockito.verify(organizationRepository).save(arg3);
+
+    }
 
     @Test
     void when_get_existing_organization_then_exception_should_be_returned() {
@@ -151,6 +153,26 @@ class OrganizationServiceTest {
 
     }
 
+    @Test
+    void when_update_organization_name_which_is_not_unique_then_exception_should_be_thrown() {
+        // given
+        String name1 = "Intive";
+        Organization existingOrg1 = new Organization(name1, "Delivery company");
+        String name2 = "Tieto";
+        Organization existingOrg2 = new Organization(name2, "Delivery company");
+        Organization updateOrganization = new Organization(name1, "Delivery Company");
+        Mockito.when(organizationRepository.findByName(name1)).thenReturn(Optional.of(existingOrg1));
+        Mockito.when(organizationRepository.findByName(name2)).thenReturn(Optional.of(existingOrg2));
+        //when
+        //then
+        assertThrows(IllegalArgumentException.class, () -> {
+            organizationService.updateOrganization(name1, updateOrganization);
+        });
+        Mockito.verify(organizationRepository, Mockito.never()).save(updateOrganization);
+
+
+    }
+
     @TestConfiguration
     static class OrganizationServiceTestConfing {
         @Bean
@@ -158,6 +180,5 @@ class OrganizationServiceTest {
             return new OrganizationService(organizationRepository);
         }
     }
-
 
 }
